@@ -2,181 +2,340 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Server @binsik.exe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenangan Alumni ISSUDA Angkatan 46</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --background: #0f172a;
-            --surface: #1e293b;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --border: #334155;
-            --whatsapp-color: #25d366;
+            --primary: #1e3a8a;
+            --primary-dark: #172554;
+            --accent: #d97706;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--background);
-            color: var(--text);
-            line-height: 1.5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-x: hidden;
-            position: relative;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Container Utama */
-        .main-container {
-            width: 100%;
-            max-width: 450px;
+        /* Header / Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 5rem 1.5rem;
             text-align: center;
-            padding: 40px 24px;
-            background-color: #111827;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        @media (min-width: 1024px) {
-            .main-container {
-                max-width: 500px;
-                padding: 50px 40px;
-            }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 10s infinite alternate;
         }
 
-        /* Desain Tulisan Atas / Judul */
-        .title-area {
-            margin-bottom: 35px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
         }
 
-        .title-area h1 {
-            font-size: 28px;
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(to right, #818cf8, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
 
-        .title-area p {
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .hero-meta {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: -3rem auto 0;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Cards / Sections */
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card h2 .icon {
+            font-size: 1.8rem;
+        }
+
+        .card p {
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
         }
 
-        /* Area Tombol Model Pilihan Halaman */
-        .button-group {
+        .highlight {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Links Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .link-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            width: 100%;
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 16px 20px;
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text);
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
+        .link-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
         }
 
-        .gallery-btn:hover, .gallery-btn:active {
-            background-color: var(--primary);
-            border-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
         }
 
-        /* Tulisan Tambahan Di Atas Tombol WhatsApp (Dibuat mengambang/tipis di area bawah atau di atas footer bawaan) */
-        .info-text-bottom {
-            font-size: 12px;
+        .link-card:hover::before {
+            transform: scaleY(1);
+            transform-origin: top;
+        }
+
+        .link-card .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .link-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .link-card p {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            margin-top: 40px;
-            letter-spacing: 0.05em;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
         }
 
-        /* Tombol Melayang WhatsApp Pojok Kanan Bawah (Ukuran Medium) */
-        .whatsapp-floating {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 56px;
-            height: 56px;
-            background-color: var(--whatsapp-color);
-            border-radius: 50%;
-            display: flex;
+        .btn {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            z-index: 999;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
             text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
         }
 
-        .whatsapp-floating:hover, .whatsapp-floating:active {
-            transform: scale(1.08);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        .btn:hover {
+            background: var(--primary-dark);
         }
 
-        /* SVG Logo WhatsApp Resmi */
-        .whatsapp-floating svg {
-            width: 30px;
-            height: 30px;
-            fill: #ffffff;
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero { padding: 4rem 1.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-meta { flex-direction: column; gap: 0.5rem; align-items: center; }
+            .card { padding: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="title-area">
-            <h1>XII4</h1>
-            <p>Pilih halaman galeri yang ingin Anda akses</p>
-        </div>
-
-        <div class="button-group">
-            <a href="https://bintangbinsik.github.io/Fotopages" class="gallery-btn">
-                <span>📂</span> Galeri Foto Utama (Halaman 1)
-            </a>
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">✨ Reuni & Temu Kangen</span>
+            <h1>Kenangan Alumni ISSUDA<br>Angkatan 46</h1>
+            <p>Merajut kembali kisah, tawa, dan persaudaraan dari masa putih abu-abu.</p>
             
-            <a href="https://bintangbinsik.github.io/Fotopages1" class="gallery-btn">
-                <span>📂</span> Galeri Foto Tambahan (Halaman 2)
-            </a>
+            <div class="hero-meta">
+                <span>📍 The Wujil Resort, Ambarawa</span>
+                <span>📅 2 Mei 2026</span>
+            </div>
         </div>
+    </header>
 
-        <div class="info-text-bottom">
-            Sistem Web Terintegrasi online, oleh hosting 🔥
-        </div>
-    </div>
+    <main class="container">
+        
+        <section class="card">
+            <h2><span class="icon">🏫</span> Tentang ISSUDA & Angkatan 46</h2>
+            <p>
+                <span class="highlight">SMA Islam Sudirman Ambarawa (ISSUDA)</span> bukan sekadar tempat menimba ilmu, melainkan rumah kedua yang membentuk karakter dan menanamkan nilai-nilai keislaman. Sebagai bagian dari <span class="highlight">Angkatan ke-46</span>, kita adalah bukti dari perjalanan panjang sekolah dalam mencetak generasi yang berakhlak dan berwawasan luas.
+            </p>
+            <p>
+                Ikatan kekeluargaan yang luar biasa kuatlah yang selalu membawa kita kembali untuk bersilaturahmi, berbagi cerita, dan merayakan persaudaraan yang tak lekang oleh waktu.
+            </p>
+        </section>
 
-    <a href="https://wa.me/6289647417373" class="whatsapp-floating" target="_blank" rel="noopener noreferrer" title="Hubungi melalui WhatsApp">
-        <svg viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-3.559c1.647.978 3.26 1.485 4.825 1.486 5.421 0 9.832-4.412 9.835-9.835.001-2.627-1.021-5.098-2.88-6.958C16.611 3.272 14.14 2.25 11.521 2.25c-5.424 0-9.837 4.414-9.84 9.839-.001 1.621.43 3.207 1.246 4.607L1.93 22.07l5.851-1.531h-.134zM17.471 14.1c-.313-.156-1.854-.915-2.131-1.016-.277-.1-.478-.15-.678.15-.2.3-.777.915-.953 1.115-.176.2-.352.225-.665.069-1.127-.565-1.928-1.01-2.693-2.316-.201-.343-.04-.529.131-.7l.462-.539c.176-.2.234-.342.352-.57.118-.227.059-.426-.03-.582-.088-.156-.678-1.634-.93-2.245-.245-.59-.496-.51-.678-.52l-.579-.01c-.2-.01-.527.074-.803.374-.277.3-1.054 1.03-1.054 2.515s1.08 2.922 1.23 3.122c.15.2 2.126 3.248 5.151 4.553.719.31 1.28.495 1.719.635.722.23 1.38.197 1.901.12.58-.087 1.854-.757 2.117-1.45.264-.693.264-1.29.186-1.413-.078-.124-.277-.199-.59-.356z"/>
-        </svg>
-    </a>
+        <section class="card">
+            <h2><span class="icon">📸</span> Dokumentasi & Galeri Digital</h2>
+            <p>
+                Momen kebersamaan di <span class="highlight">The Wujil Resort</span> pada tanggal 2 Mei 2026 telah usai, namun kenangannya abadi. Silakan akses tautan di bawah ini untuk melihat kembali keseruan acara, foto candid, hingga catatan petualangan dari rekan-rekan alumni.
+            </p>
+
+            <div class="links-grid">
+                
+                <div class="link-card">
+                    <div class="card-icon">🏃‍♂️</div>
+                    <h3>Catatan Andhika B. P.</h3>
+                    <p>Blog pribadi rekan Andhika Bintang Pratama. Berisi inspirasi gaya hidup sehat, ketahanan fisik, dan dokumentasi kegiatan Trail Run di alam bebas.</p>
+                    <a href="https://andhikabintangpratama.blogspot.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        Baca Blog →
+                    </a>
+                </div>
+
+                <div class="link-card">
+                    <div class="card-icon">🖼️</div>
+                    <h3>Galeri Foto Utama</h3>
+                    <p>Kumpulan dokumentasi profesional dan foto kebersamaan selama acara temu kangen Angkatan 46 berlangsung.</p>
+                    <a href="https://bintangbinsik.github.io" target="_blank" rel="noopener noreferrer" class="btn">
+                        Lihat Galeri →
+                    </a>
+                </div>
+
+                <div class="link-card">
+                    <div class="card-icon">📷</div>
+                    <h3>Live Photobooth ISSUDA</h3>
+                    <p>Galeri interaktif berbasis <em>real-time</em> (Apps Script). Lihat dan unduh hasil foto booth langsung dari server tanpa batas waktu.</p>
+                    <a href="https://bintangbinsik.github.io/Fotopages2" target="_blank" rel="noopener noreferrer" class="btn">
+                        Buka Photobooth →
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Kenangan Alumni SMA Islam Sudirman Ambarawa (ISSUDA) Angkatan 46.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Dibuat dengan ❤️ untuk menjaga silaturahmi.</p>
+    </footer>
 
 </body>
 </html>
